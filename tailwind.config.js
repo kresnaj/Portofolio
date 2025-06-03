@@ -23,12 +23,12 @@ module.exports = {
       },
       keyframes: {
         marquee: {
-          '0%': { transform: 'translateX(0%)' },
-          '100%': { transform: 'translateX(-100%)' },
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(calc(-100% / 3))' },
         },
         'marquee-reverse': {
-          '0%': { transform: 'translateX(-100%)' },
-          '100%': { transform: 'translateX(0%)' },
+          '0%': { transform: 'translateX(calc(-100% / 3))' },
+          '100%': { transform: 'translateX(0)' },
         },
       },
     },

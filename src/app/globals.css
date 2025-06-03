@@ -174,21 +174,16 @@ textarea:focus {
   transform: none !important;
 }
 
-/* Cursor styles */
 @media (hover: hover) {
   * {
-    cursor: none;
+    cursor: auto;  /* Hapus !important */
   }
   
-  /* Allow default cursor for specific elements */
-  .cursor-default {
-    cursor: auto !important;
+  a, button, .clickable {
+    cursor: pointer;
   }
-}
-
-/* For mobile */
-@media (hover: none) {
-  * {
-    cursor: auto;
+  
+  .cursor-default {
+    cursor: default;  /* Ganti none menjadi default */
   }
 }

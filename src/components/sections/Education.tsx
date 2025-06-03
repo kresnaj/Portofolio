@@ -18,22 +18,22 @@ interface EducationItem {
 
 const educationData: EducationItem[] = [
   {
-    year: '2021 - 2025',
-    institution: 'Universitas Negeri Surabaya',
+    year: '2022 - 2025',
+    institution: 'SMK Negeri 8 Malang',
     degree: 'Software Engineering',
     description: 'Focus on full-stack development, algorithms, data structures, and software architecture patterns.'
   },
   {
-    year: '2025 / 04',
-    institution: 'Coding Bootcamp',
-    degree: 'Full Stack Development',
-    description: 'Intensive program covering modern web technologies, databases, and deployment strategies.'
+    year: '2025 / 01 - 2025 / 04',
+    institution: 'Coding Camp 2025 Powered by DBS Foundation',
+    degree: 'Machine Learning Engineer',
+    description: 'Intensive program covering Machine Learning concepts.'
   },
   {
-    year: '2025 / 06',
-    institution: 'PT Jatin Mayantara Indonesia',
-    degree: 'Software Engineering Intern',
-    description: 'Hands-on experience in enterprise software development and agile methodologies.'
+    year: '2025 / 04 - 2025 / 06',
+    institution: 'ElevAIte x Dicoding',
+    degree: 'AI Engineer',
+    description: 'Intensive program covering Artificial Intelligence with Microsoft Azure.'
   }
 ];
 
@@ -44,12 +44,12 @@ interface EducationCardProps {
 
 const EducationCard: React.FC<EducationCardProps> = ({ item, index }) => (
   <motion.div
-    className="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-colors duration-300"
+    className="rounded-lg p-6 transition-colors duration-300 border-2 border-transparent hover:border-white hover:shadow-[0_0_105px_rgba(255,255,255,0.1)]"
     initial={{ opacity: 0, y: 50 }}
     whileInView={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.6, delay: index * 0.1 }}
     viewport={{ once: true }}
-    whileHover={{ scale: 1.02 }}
+    whileHover={{ scale: 1.01 }}
   >
     <div className="flex items-start space-x-4">
       {/* Timeline dot */}
@@ -59,9 +59,9 @@ const EducationCard: React.FC<EducationCardProps> = ({ item, index }) => (
       
       {/* Content */}
       <div className="flex-1">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
           <h3 className="text-xl font-bold text-white">{item.institution}</h3>
-          <span className="text-primary font-medium text-sm">{item.year}</span>
+          <span className="text-white font-medium text-sm">{item.year}</span>
         </div>
         
         <h4 className="text-primary text-lg font-medium mb-3">{item.degree}</h4>

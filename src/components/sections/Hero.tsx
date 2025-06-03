@@ -44,42 +44,21 @@ const HeroSection = () => {
       ref={containerRef}
       className="min-h-screen bg-black flex items-center justify-center relative overflow-hidden"
     >
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-20 left-10 w-2 h-2 bg-primary rounded-full"></div>
-        <div className="absolute top-40 right-20 w-3 h-3 bg-primary rounded-full"></div>
-        <div className="absolute bottom-32 left-1/4 w-1 h-1 bg-primary rounded-full"></div>
-        <div className="absolute bottom-20 right-1/3 w-2 h-2 bg-primary rounded-full"></div>
-      </div>
-
       <div className="container mx-auto px-6 text-center">
         <h1
           ref={titleRef}
-          className="text-5xl lg:text-7xl font-bold text-white mb-6 opacity-100"
+          className="text-5xl lg:text-7xl font-bold text-white mb-1 opacity-100"
         >
           Talk less. Do more.
           <br />
-          <span className="text-primary">Design is quite every day</span>
         </h1>
         
         <p
           ref={subtitleRef}
           className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto opacity-100"
         >
-          Hi, I'm Joshua! A passionate software engineer from Indonesia who loves creating 
-          digital experiences and solving complex problems through code.
+          Make your ideas a reality with our innovative solutions.
         </p>
-
-        <motion.div
-          className="flex justify-center"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1, duration: 0.6 }}
-        >
-          <button className="bg-primary hover:bg-orange-600 text-white px-8 py-3 rounded-lg font-medium transition-colors duration-300">
-            Get In Touch
-          </button>
-        </motion.div>
 
         {/* Scroll Indicator */}
         <motion.div

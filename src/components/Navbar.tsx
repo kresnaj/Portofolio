@@ -105,7 +105,7 @@ const Navbar: React.FC<NavbarProps> = ({
 
       {/* Side Menu */}
       <motion.div
-        className="fixed top-0 right-0 h-full w-80 bg-black z-40 navbar-menu"
+        className="fixed top-0 right-0 h-full w-80 bg-dark z-40 navbar-menu"
         variants={menuVariants}
         animate={isOpen ? 'open' : 'closed'}
         initial="closed"
@@ -140,28 +140,39 @@ const Navbar: React.FC<NavbarProps> = ({
                 Certificate
               </motion.a>
             </Link>
+            <Link href="/experiences" legacyBehavior>
+              <motion.a
+                className="block text-xl font-medium text-white hover:text-primary"
+                whileHover={{ x: 10 }}
+                transition={{ type: 'tween', ease: 'easeOut', duration: 0.2 }}
+              >
+                Experience
+              </motion.a>
+            </Link>
           </nav>
 
           {/* Social Links */}
           <div className="space-y-4">
             <motion.a
-              href="https://github.com/yourusername"
+              href="https://github.com/kresnaj"
               target="_blank"
               rel="noopener noreferrer"
-              className="block text-lg font-medium text-white hover:text-primary"
-              whileHover={{ x: 10 }}
-              transition={{ type: 'tween', ease: 'easeOut', duration: 0.2 }}
+              className="text-lg font-light text-white hover:text-primary outline-none flex items-center gap-2"
             >
+              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.6-4-1.6-.5-1.4-1.2-1.8-1.2-1.8-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1.9 1.5 2.3 1.1 2.9.9.1-.7.4-1.1.7-1.4-2.6-.3-5.4-1.3-5.4-5.9 0-1.3.5-2.4 1.1-3.2-.1-.3-.5-1.5.1-3.2 0 0 .9-.3 3 1.1.9-.2 1.8-.3 2.8-.3s1.9.1 2.8.3c2.1-1.4 3-1.1 3-1.1.6 1.7.2 2.9.1 3.2.7.8 1.1 1.9 1.1 3.2 0 4.6-2.8 5.6-5.4 5.9.4.3.7.9.7 1.9v3.5c0 .3.2.7.8.6A12 12 0 0 0 12 0z"/>
+              </svg>
               GitHub
             </motion.a>
             <motion.a
-              href="https://gitlab.com/yourusername"
+              href="https://gitlab.com/kresnaj"
               target="_blank"
               rel="noopener noreferrer"
-              className="block text-lg font-medium text-white hover:text-primary"
-              whileHover={{ x: 10 }}
-              transition={{ type: 'tween', ease: 'easeOut', duration: 0.2 }}
+              className="text-lg font-light text-white hover:text-primary outline-none flex items-center gap-2"
             >
+              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M22.65 14.39L12 22.13 1.35 14.39a.84.84 0 0 1-.3-.94l1.22-3.78 2.44-7.51A.42.42 0 0 1 4.82 2a.43.43 0 0 1 .58 0 .42.42 0 0 1 .11.18l2.44 7.49h8.1l2.44-7.51A.42.42 0 0 1 18.6 2a.43.43 0 0 1 .58 0 .42.42 0 0 1 .11.18l2.44 7.51L23 13.45a.84.84 0 0 1-.35.94z"/>
+              </svg>
               GitLab
             </motion.a>
           </div>

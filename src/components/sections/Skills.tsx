@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 interface Skill {
   name: string;
@@ -8,18 +9,21 @@ interface Skill {
 }
 
 const skills: Skill[] = [
-  { name: 'React', icon: '/icons/react.svg' },
-  { name: 'Next.js', icon: '/icons/nextjs.svg' },
-  { name: 'TypeScript', icon: '/icons/typescript.svg' },
-  { name: 'JavaScript', icon: '/icons/javascript.svg' },
-  { name: 'Node.js', icon: '/icons/nodejs.svg' },
-  { name: 'Python', icon: '/icons/python.svg' },
-  { name: 'PostgreSQL', icon: '/icons/postgresql.svg' },
-  { name: 'MongoDB', icon: '/icons/mongodb.svg' },
-  { name: 'Docker', icon: '/icons/docker.svg' },
-  { name: 'AWS', icon: '/icons/aws.svg' },
-  { name: 'Git', icon: '/icons/git.svg' },
-  { name: 'Figma', icon: '/icons/figma.svg' },
+  { name: 'TensorFlow', icon: '/icons/TensorFlow.svg' },
+  { name: 'Pytorch', icon: '/icons/Pytorch.svg' },
+  { name: 'TypeScript', icon: '/icons/Typescript.svg' },
+  { name: 'JavaScript', icon: '/icons/Javascript.svg' },
+  { name: 'Node.js', icon: '/icons/Nodejs.svg' },
+  { name: 'Python', icon: '/icons/Python.svg' },
+  { name: 'Git', icon: '/icons/Git.svg' },
+
+  { name: 'MySQL', icon: '/icons/Mysql.svg' },
+  { name: 'MongoDB', icon: '/icons/MongoDB.svg' },
+  { name: 'Tailwind', icon: '/icons/Tailwind.svg' },
+  { name: 'Postman', icon: '/icons/Postman.svg' },
+  { name: 'php', icon: '/icons/Php.svg' },
+  { name: 'Laravel', icon: '/icons/Laravel.svg' },
+  { name: 'Figma', icon: '/icons/Figma.svg' },
 ];
 
 interface SkillCardProps {
@@ -27,27 +31,19 @@ interface SkillCardProps {
 }
 
 const SkillCard: React.FC<SkillCardProps> = ({ skill }) => (
-  <div className="flex-shrink-0 mx-4 bg-gray-800 rounded-lg p-6 w-32 h-32 flex flex-col items-center justify-center group hover:bg-gray-700 transition-colors duration-300">
-    <div className="w-12 h-12 mb-3 relative">
-      {/* 
-      Replace with actual icons. For now using placeholder divs with orange background
-      Uncomment and replace with actual image when you have the icons:
+  <div className="flex-shrink-0 mx-4 rounded-lg p-6 w-36 h-36
+    flex flex-col items-center justify-center"
+    style={{ minWidth: '10rem' }}
+  >
+    <div className="w-20 h-20 mb-3 relative">
       <Image
         src={skill.icon}
         alt={skill.name}
         fill
         className="object-contain"
+        sizes="(max-width: 768px) 80px, 80px"
       />
-      */}
-      <div className="w-full h-full bg-primary rounded-lg flex items-center justify-center">
-        <span className="text-white text-xs font-bold">
-          {skill.name.slice(0, 2).toUpperCase()}
-        </span>
-      </div>
     </div>
-    <span className="text-white text-sm font-medium text-center group-hover:text-primary transition-colors duration-300">
-      {skill.name}
-    </span>
   </div>
 );
 
@@ -58,25 +54,40 @@ interface MarqueeRowProps {
 }
 
 const MarqueeRow: React.FC<MarqueeRowProps> = ({ skills, direction, speed = 25 }) => {
-  const animationClass = direction === 'right' ? 'animate-marquee' : 'animate-marquee-reverse';
-  
+  const marqueeVariants = {
+    animate: {
+      x: direction === 'left' ? 
+        [-skills.length * 200, 0] : 
+        [0, -skills.length * 200],
+      transition: {
+        x: {
+          repeat: Infinity,
+          repeatType: "loop",
+          duration: speed,
+          ease: "linear",
+        },
+      },
+    },
+  };
+
   return (
-    <div className="flex overflow-hidden">
+    <div className="relative flex overflow-hidden">
+      {/* Gradient Overlay - Left */}
+      <div className="absolute left-0 top-0 w-32 h-full z-10 bg-gradient-to-r from-black to-transparent" />
+
       <motion.div
-        className={`flex ${animationClass}`}
-        style={{
-          animationDuration: `${speed}s`,
-        }}
+        className="flex"
+        variants={marqueeVariants}
+        animate="animate"
       >
-        {/* First set */}
-        {skills.map((skill, index) => (
-          <SkillCard key={`first-${index}`} skill={skill} />
-        ))}
-        {/* Duplicate set for seamless loop */}
-        {skills.map((skill, index) => (
-          <SkillCard key={`second-${index}`} skill={skill} />
+        {/* Single set karena akan continuous */}
+        {[...skills, ...skills].map((skill, index) => (
+          <SkillCard key={`${direction}-${index}`} skill={skill} />
         ))}
       </motion.div>
+
+      {/* Gradient Overlay - Right */}
+      <div className="absolute right-0 top-0 w-32 h-full z-10 bg-gradient-to-l from-black to-transparent" />
     </div>
   );
 };
@@ -97,7 +108,7 @@ const SkillsMarquee = () => {
         </div>
 
         {/* Marquee Container */}
-        <div className="space-y-6">
+        <div className="space-y-4">
           {/* Top row - moving right */}
           <MarqueeRow skills={topRowSkills} direction="right" speed={30} />
           

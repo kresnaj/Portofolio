@@ -15,29 +15,39 @@ const AboutSection = () => {
     const section = sectionRef.current;
     if (!section) return;
 
+    // Set initial state
+    gsap.set(section.children, {
+      y: 30,
+      opacity: 0
+    });
+
     // Create timeline for entrance animation
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: section,
         start: 'top 80%',
         end: 'bottom 20%',
-        toggleActions: 'play none none none',
-        once: true,
+        toggleActions: 'play none none reset', 
       }
     });
 
     // Animate all children with stagger
-    tl.from(section.children, {
-      y: 30,
-      opacity: 0,
+    tl.to(section.children, {
+      y: 0,
+      opacity: 1,
       duration: 0.8,
       stagger: 0.2,
       ease: 'power2.out'
     });
 
     return () => {
-      tl.kill();
+      // Cleanup
+      if (tl) tl.kill();
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      // Reset styles
+      gsap.set(section.children, {
+        clearProps: 'all'
+      });
     };
   }, []);
 
@@ -52,10 +62,10 @@ const AboutSection = () => {
           <div className="flex items-center gap-4 mb-8">
             <h1 className="text-5xl text-white font-bold">Hi, I'm Joshua!</h1>
             <a 
-              href="https://linkedin.com/in/yourusername" 
+              href="https://www.linkedin.com/in/joshua-kresna-kusmono-a9a26834b/" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-flex items-center px-5 py-2 bg-black hover:bg-zinc-800 rounded-full text-white border-white transition-colors"
+              className="inline-flex items-center px-5 py-2 bg-black border-2 border-white hover:bg-white rounded-2xl text-white hover:text-black transition-colors"
             >
               <span className="mr-2">LinkedIn</span>
               <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">

@@ -11,7 +11,7 @@ if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-const ProjectsSection = () => {
+const ExperiencesPage = () => {
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -61,23 +61,23 @@ const ProjectsSection = () => {
           <div className="flex justify-center mb-8">
             <div className="w-20 h-20 relative">
               <Image
-                src="/icons/Barrier.svg" 
-                alt="Projects icon"
+                src="/icons/Barrier.svg"
+                alt="Experiences icon"
                 fill
-                className="object-contain invert"
+                className="object-contain"
               />
             </div>
           </div>
 
           {/* Title */}
           <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
-            Projects Coming Soon
+            Experiences Coming Soon
           </h2>
 
           {/* Description */}
           <p className="text-gray-400 text-lg max-w-2xl mx-auto mb-12">
-            I'm currently working on some exciting projects that will be 
-            showcased here. Check back soon to see what I've been building!
+            I'm currently curating my professional experiences and achievements.
+            Check back soon to see my journey and milestones!
           </p>
 
           {/* Expected Launch */}
@@ -103,4 +103,4 @@ const ProjectsSection = () => {
   );
 };
 
-export default ProjectsSection;
+export default ExperiencesPage;

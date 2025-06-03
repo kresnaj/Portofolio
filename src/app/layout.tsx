@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
-import RadialCursor from '@/components/cursor/RadialCursor';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -46,7 +45,6 @@ export default function RootLayout({
       </head>
       <body className={`${inter.className} antialiased`}>
         {children}
-        <RadialCursor />
       </body>
     </html>
   );
