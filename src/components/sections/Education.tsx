@@ -106,7 +106,7 @@ const EducationSection = () => {
       <div className="container mx-auto px-6">
         {/* Header */}
         <div className="education-header text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">
+          <h2 className="text-4xl lg:text-5xl text-white mb-1">
             Educational
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">

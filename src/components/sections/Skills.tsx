@@ -15,15 +15,17 @@ const skills: Skill[] = [
   { name: 'JavaScript', icon: '/icons/Javascript.svg' },
   { name: 'Node.js', icon: '/icons/Nodejs.svg' },
   { name: 'Python', icon: '/icons/Python.svg' },
-  { name: 'Git', icon: '/icons/Git.svg' },
+  { name: 'MongoDB', icon: '/icons/MongoDB.svg'},
+  { name: 'Tailwind', icon: '/icons/Tailwind.svg'},
 
   { name: 'MySQL', icon: '/icons/Mysql.svg' },
-  { name: 'MongoDB', icon: '/icons/MongoDB.svg' },
-  { name: 'Tailwind', icon: '/icons/Tailwind.svg' },
   { name: 'Postman', icon: '/icons/Postman.svg' },
   { name: 'php', icon: '/icons/Php.svg' },
   { name: 'Laravel', icon: '/icons/Laravel.svg' },
   { name: 'Figma', icon: '/icons/Figma.svg' },
+  { name: 'Git', icon: '/icons/Git.svg' },
+  { name: 'React', icon: '/icons/React.svg' },
+  { name: 'Nextjs', icon: '/icons/NextJS.svg' },
 ];
 
 interface SkillCardProps {
@@ -31,7 +33,7 @@ interface SkillCardProps {
 }
 
 const SkillCard: React.FC<SkillCardProps> = ({ skill }) => (
-  <div className="flex-shrink-0 mx-4 rounded-lg p-6 w-36 h-36
+  <div className="flex-shrink-0 mx-4 rounded-lg p-6 w-30 h-30
     flex flex-col items-center justify-center"
     style={{ minWidth: '10rem' }}
   >
@@ -102,7 +104,7 @@ const SkillsMarquee = () => {
       <div className="w-full">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">
+          <h2 className="text-4xl lg:text-5xl text-white mb-4">
             Skills & Technologies
           </h2>
         </div>

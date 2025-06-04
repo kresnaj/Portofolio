@@ -51,7 +51,7 @@ section {
 /* Firefox scrollbar */
 html {
   scrollbar-width: thin;
-  scrollbar-color: #FF6B35 #1A1A1A;
+  scrollbar-color: #ff6b35e0 #000000;
 }
 
 /* Smooth transitions */

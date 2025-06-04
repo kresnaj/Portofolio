@@ -11,6 +11,7 @@ import AboutSection from '@/components/sections/About';
 import SkillsMarquee from '@/components/sections/Skills';
 import EducationSection from '@/components/sections/Education';
 import ContactSection from '@/components/sections/Contact';
+import ProjectsSection from '@/components/sections/Project';
 
 // Hooks
 import { useScrollManager } from '@/hooks/useScrollManager';
@@ -21,6 +22,7 @@ const SECTIONS = [
   { id: 'about', name: 'About' },
   { id: 'skills', name: 'Skills' },
   { id: 'education', name: 'Education' },
+  { id: 'projects', name: 'Projects' }, // Add this
   { id: 'contact', name: 'Contact' },
 ];
 
@@ -125,6 +127,11 @@ export default function Home() {
 
     <section id="education" className="min-h-screen opacity-100">
       <EducationSection />
+    </section>
+
+    {/* New Projects section */}
+    <section id="projects" className="min-h-screen opacity-100">
+      <ProjectsSection />
     </section>
 
     <section id="contact" className="min-h-screen opacity-100">

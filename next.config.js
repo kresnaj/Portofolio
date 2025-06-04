@@ -1,25 +1,18 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  turbopack: {
+    resolveExtensions: ['.mdx', '.tsx', '.ts', '.jsx', '.js', '.mjs', '.json'],
+  },
   images: {
-    domains: [
-      // Add domains for external images here
-      'your-domain.com',
-      'example.com'
-    ],
     formats: ['image/webp', 'image/avif'],
   },
-  // Enable webpack 5 features
-  webpack: (config) => {
-    config.resolve.fallback = {
-      ...config.resolve.fallback,
-      fs: false,
-    };
-    return config;
-  },
-  // Environment variables
-  env: {
-    CUSTOM_KEY: 'custom-value',
-  },
+  // webpack: (config) => {
+  //   config.resolve.fallback = {
+  //     ...config.resolve.fallback,
+  //     fs: false,
+  //   };
+  //   return config;
+  // },
   // Headers for security
   async headers() {
     return [
