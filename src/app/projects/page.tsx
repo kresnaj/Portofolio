@@ -76,7 +76,7 @@ const ProjectsSection = () => {
 
           {/* Description */}
           <p className="text-gray-400 text-lg max-w-2xl mx-auto mb-12">
-            I'm currently working on some exciting projects that will be 
+            I&apos;m currently working on some exciting projects that will be 
             showcased here. Check back soon to see what I've been building!
           </p>
 

@@ -110,7 +110,7 @@ const ContactSection = () => {
                     Get In Touch?
                   </h2>
                   <p className="text-gray-400 text-lg">
-                    I'm always open to discussing new opportunities, creative projects, 
+                    I&apos;m always open to discussing new opportunities, creative projects, 
                     or potential collaborations. Feel free to reach out!
                   </p>
                 </div>

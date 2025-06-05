@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import Image from 'next/image';
 import Navbar from '@/components/Navbar';
 import { getFirstImageFromFolder } from '@/utils/helpers';
@@ -8,35 +8,7 @@ import CertificateModal from '@/components/CertificateModal';
 import gsap from 'gsap';
 
 const CertificatePage = () => {
-  const [selectedCategory, setSelectedCategory] = useState('ALL');
-  const [certificateImages, setCertificateImages] = useState<{ [key: string]: string }>({});
-  const [selectedCertificate, setSelectedCertificate] = useState<string | null>(null);
-  const [previewHover, setPreviewHover] = useState<string | null>(null);
-
-  useEffect(() => {
-    // Load semua gambar sertifikat
-    const loadImages = async () => {
-      const images: { [key: string]: string } = {};
-      
-      for (const cert of certificates) {
-        if (cert.folderName) {
-          try {
-            const imagePath = await getFirstImageFromFolder(cert.folderName);
-            images[cert.folderName] = imagePath;
-          } catch (error) {
-            console.error(`Error loading image for ${cert.folderName}:`, error);
-            images[cert.folderName] = '/placeholder.png';
-          }
-        }
-      }
-      
-      setCertificateImages(images);
-    };
-
-    loadImages();
-  }, []);
-
-  const certificates = [
+  const certificates = useMemo(() => [
     {
       id: 1,
       title: "Certificate of Completion",
@@ -127,7 +99,35 @@ const CertificatePage = () => {
       folderName: "AISkillFest",
       tags: ["AI"]
     }
-  ];
+  ], []); // Empty dependency array karena data statis
+
+  const [selectedCategory, setSelectedCategory] = useState('ALL');
+  const [certificateImages, setCertificateImages] = useState<{ [key: string]: string }>({});
+  const [selectedCertificate, setSelectedCertificate] = useState<string | null>(null);
+  const [previewHover, setPreviewHover] = useState<string | null>(null);
+
+  useEffect(() => {
+    // Load semua gambar sertifikat
+    const loadImages = async () => {
+      const images: { [key: string]: string } = {};
+      
+      for (const cert of certificates) {
+        if (cert.folderName) {
+          try {
+            const imagePath = await getFirstImageFromFolder(cert.folderName);
+            images[cert.folderName] = imagePath;
+          } catch (error) {
+            console.error(`Error loading image for ${cert.folderName}:`, error);
+            images[cert.folderName] = '/placeholder.png';
+          }
+        }
+      }
+      
+      setCertificateImages(images);
+    };
+
+    loadImages();
+  }, [certificates]); // Sekarang aman menggunakan certificates sebagai dependency
 
   const categories = ['ALL', 'HP LIFE', 'NVIDIA DLI', 'Dicoding', 'Udemy', 'Microsoft Learn'];
 

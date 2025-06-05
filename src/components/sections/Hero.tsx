@@ -48,7 +48,7 @@ const HeroSection = () => {
         {/* Text Content - Left Side */}
         <div className="text-left mx-16">
           <h2 className="text-4xl lg:text-5xl text-gray-200 opacity-100">
-            Hi, I'm  
+            Hi, I&apos;m  
           </h2>
           <h1
             ref={titleRef}

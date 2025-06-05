@@ -10,11 +10,7 @@ interface NavbarProps {
   onSectionClick: (section: string) => void;
 }
 
-const Navbar: React.FC<NavbarProps> = ({
-  sections = [],
-  activeSection,
-  onSectionClick,
-}) => {
+const Navbar: React.FC<NavbarProps> = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   // Close menu when clicking outside

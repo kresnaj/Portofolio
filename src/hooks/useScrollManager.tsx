@@ -26,7 +26,6 @@ export const useScrollManager = (): UseScrollManagerReturn => {
   // Simplified scroll detection without throttling
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY;
       const windowHeight = window.innerHeight;
 
       SECTIONS.forEach((sectionId) => {

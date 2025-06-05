@@ -76,7 +76,7 @@ const ExperiencesPage = () => {
 
           {/* Description */}
           <p className="text-gray-400 text-lg max-w-2xl mx-auto mb-12">
-            I'm currently curating my professional experiences.
+            I&apos;m currently curating my professional experiences.
             Check back soon to see my journey and milestones!
           </p>
 
