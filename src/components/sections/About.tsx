@@ -58,11 +58,11 @@ const AboutSection = () => {
       className="min-h-screen bg-black flex items-center py-20"
     >
       <div className="container mx-auto px-6">
-        <div className="flex flex-col items-center max-w-3xl mx-auto"> {/* Changed to center */}
-          <h2 className="text-4xl lg:text-5xl text-primary mb-4 font-bold"> {/* Changed styling */}
+        <div className="flex flex-col items-center max-w-3xl mx-auto">
+          <h2 className="text-4xl lg:text-5xl text-primary mb-4 font-bold text-center w-full"> {/* Added text-center and w-full */}
             Where Code Meets Intelligence.
           </h2>
-          <p className="text-gray-100 text-xl mb-8 text-center font-medium"> {/* Changed styling */}
+          <p className="text-gray-100 text-xl mb-8 text-center font-medium">
             Software Engineering graduate with strong skills in website development and AI integration. Experienced in deploying machine learning models into scalable web applications. Lifelong learner, actively improving through real-world projects and specialized programs.
           </p>
 

@@ -1,10 +1,9 @@
 'use client';
 
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useMemo } from 'react';
 import Image from 'next/image';
-import Navbar from '@/components/Navbar';
-import { getFirstImageFromFolder } from '@/utils/helpers';
-import CertificateModal from '@/components/CertificateModal';
+import Navbar from '../../components/Navbar';
+import CertificateModal from '../../components/CertificateModal';
 import gsap from 'gsap';
 
 const CertificatePage = () => {
@@ -15,7 +14,7 @@ const CertificatePage = () => {
       subtitle: "Data Science & Analytics",
       description: "Data Visualization and Analysis",
       category: "HP LIFE",
-      folderName: "DataScienceHPLife", 
+      imagePath: "/certificates/DataScienceHPLife.png", 
       tags: ["Data Science"]
     },
     {
@@ -24,7 +23,7 @@ const CertificatePage = () => {
       subtitle: "Learn Data Analytics with Python",
       description: "Data Visualization and Analysis",
       category: "Dicoding",
-      folderName: "BelajarAnalisisDataDenganPythonDicoding",
+      imagePath: "/certificates/BelajarAnalisisDataDenganPythonDicoding.png",
       tags: ["Python", "Data", "Visualization"]
     },
     {
@@ -33,7 +32,7 @@ const CertificatePage = () => {
       subtitle: "Learn basic of AI",
       description: "Artificial Intelligence Fundamentals",
       category: "Dicoding",
-      folderName: "BelajarDasarAIDicoding",
+      imagePath: "/certificates/BelajarDasarAIDicoding.png",
       tags: ["AI"]
     },
     {
@@ -42,7 +41,7 @@ const CertificatePage = () => {
       subtitle: "Learn Basic Machine Learning",
       description: "Machine Learning Fundamentals", 
       category: "Dicoding",
-      folderName: "BelajarMachineLearningPemulaDicoding",
+      imagePath: "/certificates/BelajarMachineLearningPemulaDicoding.png",
       tags: ["AI", "Python", "Data", "Visualization", "Machine Learning", "Scikit-Learn"]
     },
     {
@@ -51,7 +50,7 @@ const CertificatePage = () => {
       subtitle: "Deep Learning Fundamentals",
       description: "Deep Learning",
       category: "Dicoding", 
-      folderName: "DeepLearningFundamentalDicoding",
+      imagePath: "/certificates/DeepLearningFundamentalDicoding.png",
       tags: ["AI", "Python", "Data", "Visualization", "Deep Learning", "TensorFlow"]
     },
     {
@@ -60,7 +59,7 @@ const CertificatePage = () => {
       subtitle: "Getting Started of Deep Learning",
       description: "Deep Learning Essentials",
       category: "NVIDIA DLI",
-      folderName: "DeepLearning_NVIDIA",
+      imagePath: "/certificates/DeepLearning_NVIDIA.png",
       tags: ["AI", "Python", "Data", "Visualization", "Deep Learning", "PyTorch", "Optimization"]
     },
     {
@@ -69,7 +68,7 @@ const CertificatePage = () => {
       subtitle: "Disaster Risk Monitoring Using Satellite Imagery",
       description: "Deep Learning on real-world problem cases",
       category: "NVIDIA DLI",
-      folderName: "Sattelite_NVIDIA",
+      imagePath: "/certificates/Sattelite_NVIDIA.png",
       tags: ["Python", "Data", "Visualization","Deep Learning", "PyTorch", "Optimization", "NVIDIA NGC"]
     },
     {
@@ -78,7 +77,7 @@ const CertificatePage = () => {
       subtitle: "The Python Programmer 2025",
       description: "Programming Language",
       category: "Udemy",
-      folderName: "ThePythonProgrammer2025",
+      imagePath: "/certificates/ThePythonProgrammer2025.png",
       tags: ["Python", "OOP", "Data Structures", "Algorithms"]
     },
     {
@@ -87,7 +86,7 @@ const CertificatePage = () => {
       subtitle: "Mastering Kali Linux for Ethical Hackers", 
       description: "Cybersecurity Fundamentals",
       category: "Udemy",
-      folderName: "MasteringKaliLinux",
+      imagePath: "/certificates/MasteringKaliLinux.png",
       tags: ["Cybersecurity", "Kali Linux", "NMAP", "Metasploit", "Wireshark", "Burp Suite"]
     },
     {
@@ -96,38 +95,14 @@ const CertificatePage = () => {
       subtitle: "Participate AI Skill Fest",
       description: "AI Training",
       category: "Microsoft Learn", 
-      folderName: "AISkillFest",
+      imagePath: "/certificates/AISkillFest.png",
       tags: ["AI"]
     }
   ], []); // Empty dependency array karena data statis
 
   const [selectedCategory, setSelectedCategory] = useState('ALL');
-  const [certificateImages, setCertificateImages] = useState<{ [key: string]: string }>({});
   const [selectedCertificate, setSelectedCertificate] = useState<string | null>(null);
   const [previewHover, setPreviewHover] = useState<string | null>(null);
-
-  useEffect(() => {
-    // Load semua gambar sertifikat
-    const loadImages = async () => {
-      const images: { [key: string]: string } = {};
-      
-      for (const cert of certificates) {
-        if (cert.folderName) {
-          try {
-            const imagePath = await getFirstImageFromFolder(cert.folderName);
-            images[cert.folderName] = imagePath;
-          } catch (error) {
-            console.error(`Error loading image for ${cert.folderName}:`, error);
-            images[cert.folderName] = '/placeholder.png';
-          }
-        }
-      }
-      
-      setCertificateImages(images);
-    };
-
-    loadImages();
-  }, [certificates]); // Sekarang aman menggunakan certificates sebagai dependency
 
   const categories = ['ALL', 'HP LIFE', 'NVIDIA DLI', 'Dicoding', 'Udemy', 'Microsoft Learn'];
 
@@ -135,10 +110,12 @@ const CertificatePage = () => {
     ? certificates 
     : certificates.filter(cert => cert.category === selectedCategory);
 
-  const handleMouseEnter = (folderName: string) => {
+  const handleMouseEnter = (imagePath: string) => {
     if (!previewHover) {  
-      setPreviewHover(folderName);
-      const element = document.querySelector(`.preview-${folderName}`);
+      setPreviewHover(imagePath);
+      // Buat ID yang aman untuk selector dengan menghapus karakter khusus
+      const safeId = imagePath.replace(/[\/\.]/g, '-').substring(1);
+      const element = document.querySelector(`.preview${safeId}`);
       if (element) {
         gsap.killTweensOf(element);
         gsap.set(element, { display: 'flex' });
@@ -160,8 +137,10 @@ const CertificatePage = () => {
     }
   };
 
-  const handleMouseLeave = (folderName: string) => {
-    const element = document.querySelector(`.preview-${folderName}`);
+  const handleMouseLeave = (imagePath: string) => {
+    // Gunakan ID yang sama untuk konsistensi
+    const safeId = imagePath.replace(/[\/\.]/g, '-').substring(1);
+    const element = document.querySelector(`.preview${safeId}`);
     if (element) {
       gsap.killTweensOf(element);
       gsap.to(element, { 
@@ -194,21 +173,21 @@ const CertificatePage = () => {
         </div>
 
         {/* Category Filter */}
-        <div className="mb-8 overflow-x-auto">
+        <div className="mb-8 overflow-x-auto no-scrollbar">
           <div className="flex flex-nowrap gap-3 pb-2">
             {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setSelectedCategory(category)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors focus:outline-none ${
-                  selectedCategory === category
-                    ? 'bg-primary text-white'
-                    : 'bg-gray-800 text-gray-300 hover:bg-gray-700 border border-gray-700'
-                }`}
+            <button
+              key={category}
+              onClick={() => setSelectedCategory(category)}
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors focus:outline-none whitespace-nowrap ${
+              selectedCategory === category
+              ? 'bg-primary text-white'
+              : 'bg-gray-800 text-gray-300 hover:bg-gray-700 border border-gray-700'
+              }`}
               >
-                {category}
-              </button>
-            ))}
+            {category}
+          </button>
+          ))}
           </div>
         </div>
 
@@ -218,14 +197,14 @@ const CertificatePage = () => {
             <div
               key={certificate.id}
               className="relative bg-gray-900 rounded-lg shadow-lg hover:shadow-primary/20 transition-shadow duration-200 overflow-hidden border border-gray-800 group"
-              onMouseEnter={() => handleMouseEnter(certificate.folderName)}
-              onMouseLeave={() => handleMouseLeave(certificate.folderName)}
-              onClick={() => setSelectedCertificate(certificate.folderName)}
+              onMouseEnter={() => handleMouseEnter(certificate.imagePath)}
+              onMouseLeave={() => handleMouseLeave(certificate.imagePath)}
+              onClick={() => setSelectedCertificate(certificate.imagePath)}
             >
               {/* Certificate Image */}
               <div className="relative h-40 sm:h-48">
                 <Image
-                  src={certificateImages[certificate.folderName] || '/placeholder.png'}
+                  src={certificate.imagePath}
                   alt={certificate.title}
                   fill
                   className="object-cover"
@@ -236,11 +215,11 @@ const CertificatePage = () => {
 
               {/* Hover Preview */}
               <div 
-                className={`preview-${certificate.folderName} hidden absolute inset-0 bg-black/90 items-center justify-center p-4`}
+                className={`preview${certificate.imagePath.replace(/[\/\.]/g, '-').substring(1)} hidden absolute inset-0 bg-black/90 items-center justify-center p-4`}
               >
                 <div className="relative w-full h-full flex items-center justify-center">
                   <Image
-                    src={certificateImages[certificate.folderName] || '/placeholder.png'}
+                    src={certificate.imagePath}
                     alt={certificate.title}
                     fill
                     className="object-contain p-4"
@@ -302,7 +281,7 @@ const CertificatePage = () => {
         <CertificateModal
           isOpen={!!selectedCertificate}
           onClose={() => setSelectedCertificate(null)}
-          imagePath={selectedCertificate ? certificateImages[selectedCertificate] : ''}
+          imagePath={selectedCertificate || ''}
           title={selectedCertificate || ''}
         />
 

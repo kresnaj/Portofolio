@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import Navbar from '@/components/Navbar';
+import Navbar from '../../components/Navbar';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);

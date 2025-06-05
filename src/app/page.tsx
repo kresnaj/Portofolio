@@ -5,15 +5,15 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 // Components
-import Navbar from '@/components/Navbar';
-import HeroSection from '@/components/sections/Hero';
-import AboutSection from '@/components/sections/About';
-import SkillsMarquee from '@/components/sections/Skills';
-import EducationSection from '@/components/sections/Education';
-import ContactSection from '@/components/sections/Contact';
+import Navbar from '../components/Navbar';
+import HeroSection from '../components/sections/Hero';
+import AboutSection from '../components/sections/About';
+import SkillsMarquee from '../components/sections/Skills';
+import EducationSection from '../components/sections/Education';
+import ContactSection from '../components/sections/Contact';
 
 // Hooks
-import { useScrollManager } from '@/hooks/useScrollManager';
+import { useScrollManager } from '../hooks/useScrollManager';
 
 // Define the sections used in the Navbar and for scrolling
 const SECTIONS = [

@@ -32,17 +32,18 @@ interface SkillCardProps {
 }
 
 const SkillCard: React.FC<SkillCardProps> = ({ skill }) => (
-  <div className="flex-shrink-0 mx-4 rounded-lg p-6 w-30 h-30
-    flex flex-col items-center justify-center"
-    style={{ minWidth: '10rem' }}
+  <div 
+    className="flex-shrink-0 mx-0.5 sm:-mx-3 rounded-lg p-2 sm:p-6 
+    flex flex-col items-center justify-center
+    w-[calc(14%-8px)] sm:w-[calc(14%-12px)]"
   >
-    <div className="w-20 h-20 mb-3 relative">
+    <div className="w-10 h-10 sm:w-20 sm:h-20 relative">
       <Image
         src={skill.icon}
         alt={skill.name}
         fill
         className="object-contain"
-        sizes="(max-width: 768px) 80px, 80px"
+        sizes="(max-width: 640px) 40px, 80px"
       />
     </div>
   </div>
@@ -96,17 +97,17 @@ const SkillsMarquee = () => {
   const bottomRowSkills = skills.slice(Math.ceil(skills.length / 2));
 
   return (
-    <section className="min-h-screen bg-black flex items-center py-20 px-10 overflow-hidden">
+    <section className="min-h-screen bg-black flex items-center py-8 sm:py-20 px-1 sm:px-6 overflow-hidden">
       <div className="w-full">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl text-primary mb-4 font-semibold">
+        <div className="text-center mb-8 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl text-primary mb-4 font-semibold">
             Skills & Technologies
           </h2>
         </div>
 
         {/* Marquee Container */}
-        <div className="space-y-4">
+        <div className="space-y-4 sm:space-y-6">
           {/* Top row - moving right */}
           <MarqueeRow skills={topRowSkills} direction="right" speed={30} />
           
@@ -115,7 +116,7 @@ const SkillsMarquee = () => {
         </div>
 
         {/* Bottom decoration */}
-        <div className="text-center mt-16">
+        <div className="text-center mt-12 sm:mt-20">
           <motion.div
             className="inline-flex items-center space-x-2 text-gray-400"
             initial={{ opacity: 0, y: 20 }}
