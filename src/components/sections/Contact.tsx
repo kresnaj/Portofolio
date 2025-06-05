@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Mail, Phone, MapPin } from 'lucide-react';
@@ -97,7 +98,6 @@ const ContactSection = () => {
       ref={sectionRef}
       className="min-h-screen bg-black"
     >
-      {/* Contact section with curved background */}
       <div className="bg-dark rounded-t-[48px]"> 
         <div className="container mx-auto px-6 py-20">
           <div className="max-w-6xl mx-auto">
@@ -106,7 +106,7 @@ const ContactSection = () => {
               <motion.div className="contact-info space-y-8">
                 {/* Header */}
                 <div className="mb-12">
-                  <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">
+                  <h2 className="text-4xl lg:text-5xl font-bold text-primary mb-4">
                     Get In Touch?
                   </h2>
                   <p className="text-gray-400 text-lg">
@@ -117,53 +117,70 @@ const ContactSection = () => {
 
                 {/* Contact Details */}
                 <div className="space-y-6">
-                  <motion.div 
-                    className="flex items-center space-x-4 rounded-xl"
-                    whileHover={{ x: 10 }}
-                    transition={{ type: 'tween', ease: 'easeOut', duration: 0.2 }}
-                  >
-                    <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
-                      <Mail className="w-5 h-5 text-white" />
-                    </div>
-                    <div>
-                      <p className="text-white font-medium">Email</p>
-                      <p className="text-gray-400">jshkrsna@gmail.com</p>
-                    </div>
-                  </motion.div>
+                  <div className="flex flex-wrap gap-4">
+                    {/* Email and Phone side by side */}
+                    <div className="grid grid-cols-2 gap-4 w-full">
+                      <motion.div 
+                        className="flex items-center space-x-4 rounded-xl"
+                        whileHover={{ x: 10 }}
+                        transition={{ type: 'tween', ease: 'easeOut', duration: 0.2 }}
+                      >
+                        <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
+                          <Mail className="w-5 h-5 text-white" />
+                        </div>
+                        <div>
+                          <p className="text-white font-medium">Email</p>
+                          <p className="text-gray-400">jshkrsna@gmail.com</p>
+                        </div>
+                      </motion.div>
 
-                  <motion.div 
-                    className="flex items-center space-x-4 rounded-xl"
-                    whileHover={{ x: 10 }}
-                    transition={{ type: 'tween', ease: 'easeOut', duration: 0.2 }}
-                  >
-                    <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
-                      <Phone className="w-5 h-5 text-white" />
+                      <motion.div 
+                        className="flex items-center space-x-4 rounded-xl"
+                        whileHover={{ x: 10 }}
+                        transition={{ type: 'tween', ease: 'easeOut', duration: 0.2 }}
+                      >
+                        <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
+                          <Phone className="w-5 h-5 text-white" />
+                        </div>
+                        <div>
+                          <p className="text-white font-medium">Phone</p>
+                          <p className="text-gray-400">+62 856-07607060</p>
+                        </div>
+                      </motion.div>
                     </div>
-                    <div>
-                      <p className="text-white font-medium">Phone</p>
-                      <p className="text-gray-400">+62 856-07607060</p>
-                    </div>
-                  </motion.div>
 
-                  <motion.div 
-                    className="flex items-center space-x-4 rounded-xl"
-                    whileHover={{ x: 10 }}
-                    transition={{ type: 'tween', ease: 'easeOut', duration: 0.2 }}
-                  >
-                    <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
-                      <MapPin className="w-5 h-5 text-white" />
-                    </div>
-                    <div>
-                      <p className="text-white font-medium">Location</p>
-                      <p className="text-gray-400">Malang, Indonesia</p>
-                    </div>
-                  </motion.div>
+                    {/* Location below */}
+                    <motion.div 
+                      className="flex items-center space-x-4 rounded-xl w-1/2"
+                      whileHover={{ x: 10 }}
+                      transition={{ type: 'tween', ease: 'easeOut', duration: 0.2 }}
+                    >
+                      <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
+                        <MapPin className="w-5 h-5 text-white" />
+                      </div>
+                      <div>
+                        <p className="text-white font-medium">Location</p>
+                        <p className="text-gray-400">Malang, Indonesia</p>
+                      </div>
+                    </motion.div>
+                  </div>
+
+                  {/* Contact Image - Updated positioning */}
+                  <div className="relative w-[300px] h-[300px]"> {/* Fixed width and height */}
+                    <Image
+                      src="/icons/rocket.png" 
+                      alt="Contact Illustration"
+                      fill
+                      className="object-contain"
+                      priority
+                    />
+                  </div>
                 </div>
               </motion.div>
 
               {/* Right Side - Contact Form */}
               <motion.div className="contact-form">
-                <div className="border-2 border-white bg-black rounded-xl p-8">
+                <div className="border-2 border-primary bg-black rounded-xl p-8">
                   <h3 className="text-2xl font-bold text-white mb-6">Send Message</h3>
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div>
@@ -220,7 +237,7 @@ const ContactSection = () => {
                       className={`w-full py-3 rounded-lg font-medium transition-colors duration-300 ${
                         isSubmitting 
                           ? 'bg-gray-600 text-gray-400 cursor-not-allowed' 
-                          : 'bg-primary hover:bg-orange-600 text-white'
+                          : 'bg-primary hover:bg-purple-500 text-white'
                       }`}
                       whileTap={{ scale: 0.98 }}
                     >

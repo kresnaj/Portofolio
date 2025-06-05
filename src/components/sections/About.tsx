@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Link from 'next/link';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
@@ -57,39 +58,31 @@ const AboutSection = () => {
       className="min-h-screen bg-black flex items-center py-20"
     >
       <div className="container mx-auto px-6">
-        <div className="flex flex-col items-start max-w-3xl mx-auto">
-          
-          <div className="flex items-center gap-4 mb-8">
-            <h1 className="text-5xl text-white font-bold">Hi, I'm Joshua!</h1>
-            <a 
-              href="https://www.linkedin.com/in/joshua-kresna-kusmono-a9a26834b/" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="inline-flex items-center px-5 py-2 bg-black border-2 border-white hover:bg-white rounded-2xl text-white hover:text-black transition-colors"
-            >
-              <span className="mr-2">LinkedIn</span>
-              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-              </svg>
-            </a>
-          </div>
-
-          {/* Main Description */}
-          <p className="text-gray-400 text-lg mb-8">
-            A professional that expertise on Website Developer and AI Enthusiast. 
-            Create a Model that performs well to website application. Has IT background 
-            with Software Engineering major.
+        <div className="flex flex-col items-center max-w-3xl mx-auto"> {/* Changed to center */}
+          <h2 className="text-4xl lg:text-5xl text-primary mb-4 font-bold"> {/* Changed styling */}
+            Where Code Meets Intelligence.
+          </h2>
+          <p className="text-gray-100 text-xl mb-8 text-center font-medium"> {/* Changed styling */}
+            Software Engineering graduate with strong skills in website development and AI integration. Experienced in deploying machine learning models into scalable web applications. Lifelong learner, actively improving through real-world projects and specialized programs.
           </p>
 
-          {/* Skills Section */}
-          <div className="flex flex-wrap gap-3">
-            <span className="px-6 py-2 bg-zinc-900 text-gray-500 rounded-full text-sm hover:bg-zinc-800 transition-colors">
-              Software Engineering
-            </span>
-            <span className="px-6 py-2 bg-zinc-900 text-gray-500 rounded-full text-sm hover:bg-zinc-800 transition-colors">
-              Machine Learning
-            </span>
-          </div>
+          <Link 
+            href="/projects" 
+            className="inline-flex items-center px-5 py-2 bg-black border-2 border-primary hover:bg-primary rounded-xl text-white hover:text-black transition-colors"
+          >
+            <span className="mr-2">See my project</span>
+            <svg 
+              className="w-4 h-4" 
+              viewBox="0 0 24 24" 
+              fill="none" 
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </Link>
         </div>
       </div>
     </section>

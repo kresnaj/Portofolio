@@ -17,7 +17,6 @@ const skills: Skill[] = [
   { name: 'Python', icon: '/icons/Python.svg' },
   { name: 'MongoDB', icon: '/icons/MongoDB.svg'},
   { name: 'Tailwind', icon: '/icons/Tailwind.svg'},
-
   { name: 'MySQL', icon: '/icons/Mysql.svg' },
   { name: 'Postman', icon: '/icons/Postman.svg' },
   { name: 'php', icon: '/icons/Php.svg' },
@@ -56,22 +55,6 @@ interface MarqueeRowProps {
 }
 
 const MarqueeRow: React.FC<MarqueeRowProps> = ({ skills, direction, speed = 25 }) => {
-  const marqueeVariants = {
-    animate: {
-      x: direction === 'left' ? 
-        [-skills.length * 200, 0] : 
-        [0, -skills.length * 200],
-      transition: {
-        x: {
-          repeat: Infinity,
-          repeatType: "loop",
-          duration: speed,
-          ease: "linear",
-        },
-      },
-    },
-  };
-
   return (
     <div className="relative flex overflow-hidden">
       {/* Gradient Overlay - Left */}
@@ -79,12 +62,25 @@ const MarqueeRow: React.FC<MarqueeRowProps> = ({ skills, direction, speed = 25 }
 
       <motion.div
         className="flex"
-        variants={marqueeVariants}
-        animate="animate"
+        animate={{
+          x: direction === 'right' ? ['0%', '-50%'] : ['-50%', '0%'],
+        }}
+        transition={{
+          x: {
+            repeat: Infinity,
+            repeatType: "loop",
+            duration: speed,
+            ease: "linear",
+          },
+        }}
       >
-        {/* Single set karena akan continuous */}
-        {[...skills, ...skills].map((skill, index) => (
-          <SkillCard key={`${direction}-${index}`} skill={skill} />
+        {/* First set */}
+        {skills.map((skill, index) => (
+          <SkillCard key={`${direction}-1-${index}`} skill={skill} />
+        ))}
+        {/* Second set - exact duplicate */}
+        {skills.map((skill, index) => (
+          <SkillCard key={`${direction}-2-${index}`} skill={skill} />
         ))}
       </motion.div>
 
@@ -100,11 +96,11 @@ const SkillsMarquee = () => {
   const bottomRowSkills = skills.slice(Math.ceil(skills.length / 2));
 
   return (
-    <section className="min-h-screen bg-black flex items-center py-20 overflow-hidden">
+    <section className="min-h-screen bg-black flex items-center py-20 px-10 overflow-hidden">
       <div className="w-full">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl text-white mb-4">
+          <h2 className="text-4xl lg:text-5xl text-primary mb-4 font-semibold">
             Skills & Technologies
           </h2>
         </div>

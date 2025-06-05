@@ -40,31 +40,23 @@ section {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #FF6B35;
+  background: #CBC3E3;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #e55a2b;
+  background: #b2b2b2;
 }
 
 /* Firefox scrollbar */
 html {
   scrollbar-width: thin;
-  scrollbar-color: #ff6b35e0 #000000;
+  scrollbar-color: #CBC3E3 #000000;
 }
 
 /* Smooth transitions */
 * {
   transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
-}
-
-/* Focus styles */
-button:focus,
-input:focus,
-textarea:focus {
-  outline: 2px solid #FF6B35;
-  outline-offset: 2px;
 }
 
 /* Selection styles */

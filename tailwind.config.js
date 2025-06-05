@@ -9,7 +9,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#F4B400', // Adjust this color to match your design
+        primary: '#C3B1E1', 
         dark: '#0A0A0A',
         'gray-900': '#1A1A1A',
         'gray-800': '#2A2A2A',

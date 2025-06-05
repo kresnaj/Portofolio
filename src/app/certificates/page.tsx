@@ -40,8 +40,8 @@ const CertificatePage = () => {
     {
       id: 1,
       title: "Certificate of Completion",
-      subtitle: "Artificial Intelligence Fundamentals",
-      description: "Data Science & Analytics",
+      subtitle: "Data Science & Analytics",
+      description: "Data Visualization and Analysis",
       category: "HP LIFE",
       folderName: "DataScienceHPLife", 
       tags: ["Data Science"]
@@ -49,8 +49,8 @@ const CertificatePage = () => {
     {
       id: 2,
       title: "Certificate of Completion", 
-      subtitle: "Machine Learning Essentials",
-      description: "Learn  Data Analytics with Python",
+      subtitle: "Learn Data Analytics with Python",
+      description: "Data Visualization and Analysis",
       category: "Dicoding",
       folderName: "BelajarAnalisisDataDenganPythonDicoding",
       tags: ["Python", "Data", "Visualization"]
@@ -58,8 +58,8 @@ const CertificatePage = () => {
     {
       id: 3,
       title: "Certificate of Completion",
-      subtitle: "Machine Learning Essentials",
-      description: "Learn basic of AI",
+      subtitle: "Learn basic of AI",
+      description: "Artificial Intelligence Fundamentals",
       category: "Dicoding",
       folderName: "BelajarDasarAIDicoding",
       tags: ["AI"]
@@ -67,8 +67,8 @@ const CertificatePage = () => {
     {
       id: 4,
       title: "Certificate of Completion",
-      subtitle: "Machine Learning Essentials",
-      description: "Learn Basic Machine Learning", 
+      subtitle: "Learn Basic Machine Learning",
+      description: "Machine Learning Fundamentals", 
       category: "Dicoding",
       folderName: "BelajarMachineLearningPemulaDicoding",
       tags: ["AI", "Python", "Data", "Visualization", "Machine Learning", "Scikit-Learn"]
@@ -76,8 +76,8 @@ const CertificatePage = () => {
     {
       id: 5,
       title: "Certificate of Completion",
-      subtitle: "Deep Learning Essentials",
-      description: "Deep Learning Fundamentals",
+      subtitle: "Deep Learning Fundamentals",
+      description: "Deep Learning",
       category: "Dicoding", 
       folderName: "DeepLearningFundamentalDicoding",
       tags: ["AI", "Python", "Data", "Visualization", "Deep Learning", "TensorFlow"]
@@ -85,8 +85,8 @@ const CertificatePage = () => {
     {
       id: 6,
       title: "Certificate of Completion",
-      subtitle: "Deep Learning Essentials",
-      description: "Getting Started Deep Learning",
+      subtitle: "Getting Started of Deep Learning",
+      description: "Deep Learning Essentials",
       category: "NVIDIA DLI",
       folderName: "DeepLearning_NVIDIA",
       tags: ["AI", "Python", "Data", "Visualization", "Deep Learning", "PyTorch", "Optimization"]
@@ -94,8 +94,8 @@ const CertificatePage = () => {
     {
       id: 7,
       title: "Certificate of Completion",
-      subtitle: "AI on real world problem case",
-      description: "Disaster Risk Monitoring Using Satellite Imagery",
+      subtitle: "Disaster Risk Monitoring Using Satellite Imagery",
+      description: "Deep Learning on real-world problem cases",
       category: "NVIDIA DLI",
       folderName: "Sattelite_NVIDIA",
       tags: ["Python", "Data", "Visualization","Deep Learning", "PyTorch", "Optimization", "NVIDIA NGC"]
@@ -103,8 +103,8 @@ const CertificatePage = () => {
     {
       id: 8,
       title: "Certificate of Completion", 
-      subtitle: "Programming for Machine Learning",
-      description: "The Python Programmer 2025",
+      subtitle: "The Python Programmer 2025",
+      description: "Programming Language",
       category: "Udemy",
       folderName: "ThePythonProgrammer2025",
       tags: ["Python", "OOP", "Data Structures", "Algorithms"]
@@ -112,8 +112,8 @@ const CertificatePage = () => {
     {
       id: 9,
       title: "Certificate of Completion",
-      subtitle: "Cycbersecurity Essentials", 
-      description: "Mastering Kali Linux for Ethical Hackers",
+      subtitle: "Mastering Kali Linux for Ethical Hackers", 
+      description: "Cybersecurity Fundamentals",
       category: "Udemy",
       folderName: "MasteringKaliLinux",
       tags: ["Cybersecurity", "Kali Linux", "NMAP", "Metasploit", "Wireshark", "Burp Suite"]
@@ -122,7 +122,7 @@ const CertificatePage = () => {
       id: 10,
       title: "Certificate of Completion",
       subtitle: "Participate AI Skill Fest",
-      description: "Participate AI Skill Fest",
+      description: "AI Training",
       category: "Microsoft Learn", 
       folderName: "AISkillFest",
       tags: ["AI"]
@@ -136,7 +136,7 @@ const CertificatePage = () => {
     : certificates.filter(cert => cert.category === selectedCategory);
 
   const handleMouseEnter = (folderName: string) => {
-    if (!previewHover) {  // Only trigger if no preview is active
+    if (!previewHover) {  
       setPreviewHover(folderName);
       const element = document.querySelector(`.preview-${folderName}`);
       if (element) {
@@ -191,7 +191,6 @@ const CertificatePage = () => {
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-white mb-2">Certificate</h1>
-          <p className="text-gray-400">Explore your earned certificates and achievements</p>
         </div>
 
         {/* Category Filter */}
@@ -272,9 +271,13 @@ const CertificatePage = () => {
                 </span>
 
                 {/* Title & Description */}
-                <div>
-                  <h3 className="text-lg font-medium text-white truncate">{certificate.subtitle}</h3>
-                  <p className="text-sm text-gray-400 mt-1 line-clamp-2">{certificate.description}</p>
+                <div className="min-h-[4rem]">
+                  <h3 className="text-lg font-medium text-white break-words">
+                    {certificate.subtitle}
+                  </h3>
+                  <p className="text-sm text-gray-400 mt-1 line-clamp-2">
+                    {certificate.description}
+                  </p>
                 </div>
 
                 {/* Tags */}

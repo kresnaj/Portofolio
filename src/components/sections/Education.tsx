@@ -44,7 +44,7 @@ interface EducationCardProps {
 
 const EducationCard: React.FC<EducationCardProps> = ({ item, index }) => (
   <motion.div
-    className="rounded-lg p-6 transition-colors duration-300 border-2 border-transparent hover:border-white hover:shadow-[0_0_105px_rgba(255,255,255,0.1)]"
+    className="rounded-lg p-6 transition-colors duration-300 border-2 border-transparent hover:border-primary hover:shadow-[0_0_105px_rgba(255,255,255,0.1)]"
     initial={{ opacity: 0, y: 50 }}
     whileInView={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.6, delay: index * 0.1 }}
@@ -66,7 +66,7 @@ const EducationCard: React.FC<EducationCardProps> = ({ item, index }) => (
         
         <h4 className="text-primary text-lg font-medium mb-3">{item.degree}</h4>
         
-        <p className="text-gray-400 leading-relaxed">{item.description}</p>
+        <p className="text-gray-200 leading-relaxed">{item.description}</p>
       </div>
     </div>
   </motion.div>
@@ -106,10 +106,10 @@ const EducationSection = () => {
       <div className="container mx-auto px-6">
         {/* Header */}
         <div className="education-header text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl text-white mb-1">
+          <h2 className="text-4xl lg:text-5xl text-primary font-semibold mb-1">
             Educational
           </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+          <p className="text-gray-100 text-lg max-w-2xl mx-auto">
             My educational journey and professional development milestones
           </p>
         </div>
@@ -133,7 +133,7 @@ const EducationSection = () => {
         >
           <div className="inline-flex items-center space-x-4">
             <div className="w-12 h-px bg-primary"></div>
-            <span className="text-gray-400 text-sm">Continuous Learning Journey</span>
+            <span className="text-gray-200 text-sm">Continuous Learning Journey</span>
             <div className="w-12 h-px bg-primary"></div>
           </div>
         </motion.div>
