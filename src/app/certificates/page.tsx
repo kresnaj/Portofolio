@@ -257,14 +257,16 @@ const CertificatePage = () => {
               <div className="p-4 space-y-3">
                 {/* Category Badge */}
                 <span className={`inline-block px-2 py-1 text-xs font-medium rounded ${
-                  certificate.category === 'HP LIFE' 
-                    ? 'bg-primary/20 text-primary' 
+                      certificate.category === 'HP LIFE' 
+                    ? 'bg-blue-200/20 text-blue-200' 
                     : certificate.category === 'NVIDIA DLI'
                     ? 'bg-green-900/20 text-green-400'
                     : certificate.category === 'Dicoding'
                     ? 'bg-blue-900/20 text-blue-400'
-                    : certificate.category === 'Microsoft Learn'
+                    : certificate.category === 'Udemy'
                     ? 'bg-purple-900/20 text-purple-400'
+                    : certificate.category === 'Microsoft Learn'
+                    ? 'bg-yellow-900/20 text-yellow-400'
                     : 'bg-orange-900/20 text-orange-400'
                 }`}>
                   {certificate.category}
